@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>MAREA — Yate de Lujo en Los Mochis</title>
+<meta name="description" content="Renta un yate de lujo en Los Mochis, Sinaloa. Experiencias privadas en el mar de Cortés. Pesca, eventos, atardeceres.">
+<meta name="author" content="MAREA Yachts">
+<meta name="theme-color" content="#c9a84c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --beige:#f5f0e6;
+  --white:#ffffff;
+  --navy:#0b1a32;
+  --gold:#c5a059;
+  --gold-light:#e5c07b;
+  --charcoal:#2a333c;
+  --bg-deep:#f5f0e6;
+  --card:#ffffff;
+  --border:rgba(11, 26, 50, 0.1);
+  --border-light:rgba(0, 0, 0, 0.05);
+  --text:#0b1a32;
+  --text-dim:#5a6a8a;
+  --text-mid:#2a3a5a;
+  --radius:50px;
+  --radius-block:40px;
+  --display:'Playfair Display',Georgia,serif;
+  --body:'Montserrat',sans-serif;
+  --cursive:'Great Vibes', 'Dancing Script', 'Pacifico', cursive;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--body);background:var(--bg-deep);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--beige)}
+::-webkit-scrollbar-thumb{background:var(--navy);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* CHAR DROP */
+@keyframes charDropIn{
+  from{opacity:0;filter:blur(6px);transform:translateY(-14px)}
+  to{opacity:1;filter:blur(0);transform:translateY(0)}
+}
+.char-anim .char{display:inline-block;opacity:0;animation:charDropIn .5s cubic-bezier(.22,1,.36,1) forwards;will-change:opacity,transform,filter}
+.char-anim .char-space{display:inline-block;width:.3em}
+.gold-chars .char,.gold-chars strong .char{
+  color: var(--gold);
+  text-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes float{
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+}
+.floating{animation:float 6s ease-in-out infinite}
+.floating-delayed{animation:float 8s ease-in-out infinite 1s}
+.reveal{opacity:0;transform:translateY(40px) scale(0.98);transition:opacity 1.2s cubic-bezier(.22,1,.36,1),transform 1.2s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+.reveal-delay-1{transition-delay:.15s}
+.reveal-delay-2{transition-delay:.3s}
+.reveal-delay-3{transition-delay:.45s}
+.reveal-delay-4{transition-delay:.6s}
+
+/* CURSIVE HIGHLIGHTS */
+em, .cursive{
+  font-family: var(--cursive);
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.hero h1 em, .section-title em{
+  font-family: var(--cursive);
+  font-size: 1.5em;
+  line-height: 1.2;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 8px;
+  color: var(--gold);
+  font-weight: 400;
+  text-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 50px;transition:all .4s}
+nav.scrolled{background:rgba(248, 240, 229, 0.96);backdrop-filter:blur(24px);padding:18px 50px;border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;transition:color .3s}
+nav.scrolled .logo{color:var(--navy)}
+.logo span{display:block;font-size:9px;font-family:var(--body);font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:-4px}
+nav.scrolled .logo span{color:var(--text-dim)}
+.nav-links{display:flex;align-items:center;gap:40px}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:#fff;transition:all .3s}
+nav.scrolled .nav-links a{color:var(--text-mid)}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:transparent;border:1px solid #fff;color:#fff;padding:11px 28px;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;transition:all .35s;cursor:pointer;border-radius:var(--radius)}
+nav.scrolled .nav-cta{border-color:var(--navy);color:var(--navy)}
+.nav-cta:hover{background:var(--gold);border-color:var(--gold);color:#fff;transform:scale(1.05);box-shadow:0 8px 20px rgba(197, 160, 89, 0.25)}
+.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:5px}
+.hamburger span{display:block;width:24px;height:1px;background:#fff;transition:all .3s}
+nav.scrolled .hamburger span{background:var(--navy)}
+@media(max-width:768px){
+  nav{padding:20px 24px}
+  nav.scrolled{padding:14px 24px}
+  .nav-links{display:none;position:absolute;top:65px;left:0;right:0;background:rgba(249,247,243,.98);flex-direction:column;padding:40px;gap:30px;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .hero-content{padding-top:60px}
+  .hero h1 em{
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: #fff;
+    font-family: var(--cursive);
+    font-size: 1.2em;
+    line-height: 1.2;
+    display: block;
+    margin-top: 10px;
+    transform: none;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:#000}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-video{width:100%;height:100%;object-fit:cover;filter:brightness(.4) saturate(1.1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(11, 26, 50, 0.85) 0%, rgba(11, 26, 50, 0.4) 50%, rgba(245, 240, 230, 0.4) 100%);z-index:1}
+.hero-side-lines{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero-side-lines::before,.hero-side-lines::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(0,43,91,.1),transparent)}
+.hero-side-lines::before{left:10%}
+.hero-side-lines::after{right:10%}
+.hero-content{position:relative;z-index:10;max-width:1000px;padding:0 30px;padding-top:80px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:16px;margin-bottom:36px;animation:fadeIn 1.2s .3s both}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--gold);opacity:.7}
+.hero-eyebrow span{font-size:10px;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:#fff;opacity:.8}
+.hero h1{
+  font-family: var(--display);
+  font-size: clamp(52px, 8vw, 120px);
+  font-weight: 400;
+  letter-spacing: -.01em;
+  line-height: 1;
+  margin-bottom: 24px;
+  color: #fff;
+  text-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  animation: fadeUp 1.2s 0.6s both;
+}
+.hero h1 em{
+  display: block;
+  font-family: var(--cursive);
+  font-size: clamp(40px, 6vw, 100px);
+  color: #fff;
+  line-height: 1.1;
+  margin-top: 5px;
+  text-shadow: 0 0 50px rgba(0,0,0,0.8), 0 10px 40px rgba(0,0,0,0.6);
+}
+.hero-tagline{font-family:var(--display);font-size:clamp(20px,3vw,38px);font-weight:400;color:var(--gold);opacity:.95;margin-bottom:40px;animation:fadeUp 1s .9s both;letter-spacing:.02em;text-shadow:0 5px 15px rgba(0,0,0,0.5)}
+.hero-desc{font-size:14px;font-weight:300;letter-spacing:.08em;color:rgba(255,255,255,0.9);margin-bottom:60px;animation:fadeUp 1s 1.1s both;max-width:600px;margin-left:auto;margin-right:auto;line-height:2;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
+.hero-cta-row{display:flex;align-items:center;justify-content:center;gap:20px;animation:fadeUp 1s 1.3s both;flex-wrap:wrap}
+.btn-gold{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:#fff;padding:18px 50px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;transition:all .35s;cursor:pointer;border:none;border-radius:var(--radius)}
+.btn-gold:hover{background:var(--gold-light);color:#fff;transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.btn-ghost{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);color:#fff;padding:18px 40px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.3);transition:all .35s;cursor:pointer;border-radius:var(--radius)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);background:rgba(255,255,255,0.1)}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:2;animation:fadeIn 1.5s 2s both}
+.hero-scroll-line{width:1px;height:60px;background:linear-gradient(180deg,var(--gold2),transparent);margin:0 auto;animation:pulse 2s infinite}
+.hero-scroll span{display:block;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-dim);margin-top:12px;text-align:center}
+
+/* DIVIDER */
+.gold-divider{display:flex;align-items:center;gap:20px;padding:0 40px;max-width:1300px;margin:0 auto}
+.gold-divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--navy),transparent)}
+.gold-divider-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);opacity:.4;flex-shrink:0}
+
+/* SECTIONS */
+section{padding:120px 50px;position:relative}
+.section-inner{max-width:1300px;margin:0 auto}
+.section-label{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.section-label-line{width:30px;height:1px;background:var(--gold);opacity:.7}
+.section-label span{font-size:9px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);opacity:.9}
+.section-title{font-family:var(--display);font-size:clamp(38px,5vw,72px);font-weight:400;line-height:1.1;margin-bottom:20px;letter-spacing:-.01em;color:var(--text)}
+.section-title em{color:var(--gold);font-style:normal}
+.section-desc{font-size:13px;font-weight:300;color:var(--text-mid);line-height:2;letter-spacing:.04em;max-width:560px}
+
+/* EXPERIENCES */
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:80px}
+.exp-card{background:var(--card);padding:52px 40px;position:relative;overflow:hidden;cursor:pointer;transition:all .5s cubic-bezier(.22,1,.36,1);border-radius:var(--radius-block);border:1px solid transparent}
+.exp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.exp-card:hover{background:var(--navy);transform:translateY(-10px) scale(1.02);box-shadow:0 30px 60px -15px rgba(11, 26, 50, .3);border-color:var(--navy)}
+.exp-card:hover h3, .exp-card:hover p, .exp-card:hover .exp-card-tag{color:#fff}
+.exp-card:hover .exp-num{color:rgba(255,255,255,0.1)}
+.exp-card:hover::after{transform:scaleX(1)}
+.exp-num{font-family:var(--display);font-size:64px;font-weight:300;color:rgba(11, 26, 50, .08);line-height:1;margin-bottom:20px;transition:color .4s}
+.exp-card:hover .exp-num{color:rgba(197, 160, 89, .2);transform:translateX(10px)}
+.exp-icon{font-size:24px;margin-bottom:20px}
+.exp-card h3{font-family:var(--display);font-size:26px;font-weight:400;margin-bottom:14px;color:var(--text);letter-spacing:-.01em}
+.exp-card p{font-size:12px;font-weight:300;color:var(--text-dim);line-height:2;letter-spacing:.04em}
+.exp-card-tag{margin-top:28px;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);opacity:.8}
+@media(max-width:900px){.exp-grid{grid-template-columns:1fr}}
+
+/* FEATURE (ALTERNATING) */
+.feature-block{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--border-light);margin-bottom:30px;border-radius:var(--radius-block);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.03)}
+.feature-block.reverse{direction:rtl}
+.feature-block.reverse > *{direction:ltr}
+.feature-img{position:relative;overflow:hidden;min-height:480px;border-radius:var(--radius-block)}
+.feature-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.9);transition:all 1.2s cubic-bezier(.22,1,.36,1);border-radius:var(--radius-block)}
+.feature-block:hover .feature-img img{filter:brightness(.9) saturate(1);transform:scale(1.1) rotate(1deg)}
+.feature-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,242,236,.15),transparent)}
+.feature-text{padding:70px 60px;display:flex;flex-direction:column;justify-content:center;background:var(--card);position:relative}
+.feature-text::before{content:'';position:absolute;top:50%;left:0;width:1px;height:60%;transform:translateY(-50%);background:linear-gradient(180deg,transparent,var(--border),transparent)}
+.feature-block.reverse .feature-text::before{left:auto;right:0}
+.feature-number{font-family:var(--display);font-size:100px;font-weight:300;color:rgba(154,114,48,.07);line-height:1;margin-bottom:-30px;display:block}
+.feature-text h3{font-family:var(--display);font-size:36px;font-weight:400;color:var(--text);margin-bottom:20px;letter-spacing:-.01em}
+.feature-text h3 em{font-style:italic;color:var(--gold3)}
+.feature-text p{font-size:13px;font-weight:300;color:var(--text-dim);line-height:2.1;letter-spacing:.04em;margin-bottom:30px}
+.feature-detail{display:flex;flex-direction:column;gap:10px}
+.feature-detail-item{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid)}
+.feature-detail-item::before{content:'';width:20px;height:1px;background:var(--navy);opacity:.6;flex-shrink:0}
+@media(max-width:900px){
+  .feature-block{grid-template-columns:1fr}
+  .feature-block.reverse{direction:ltr}
+  .feature-img{min-height:300px}
+  .feature-text{padding:50px 30px}
+  .feature-text::before{display:none}
+}
+
+/* GALLERY STRIP */
+.gallery-strip{display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-template-rows:320px 220px;gap:3px;margin-top:80px}
+.gallery-strip-item{overflow:hidden;position:relative;cursor:pointer}
+.gallery-strip-item:first-child{grid-row:1/3}
+.gallery-strip-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.9);transition:all 1s cubic-bezier(.22,1,.36,1)}
+.gallery-strip-item:hover img{filter:brightness(1) saturate(1.1);transform:scale(1.08)}
+.gallery-label{position:absolute;bottom:30px;left:30px;font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:#fff;opacity:0;transform:translateY(10px);transition:all .4s;z-index:2}
+.gallery-strip-item:hover .gallery-label{opacity:1;transform:translateY(0)}
+.gallery-strip-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(11,26,50,0.6), transparent);opacity:0;transition:opacity .4s}
+.gallery-strip-item:hover::after{opacity:1}
+@media(max-width:768px){
+  .gallery-strip{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-strip-item:first-child{grid-row:auto;grid-column:1/3}
+  .gallery-strip-item:first-child img{height:260px}
+  .gallery-strip-item img{height:160px}
+}
+
+/* STATS */
+.stats-section{background:var(--beige);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 50px;position:relative;overflow:hidden}
+.stats-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%, rgba(197, 160, 89, 0.1) 0%, transparent 70%);pointer-events:none}
+.stats-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.stat-item{background:#fff;padding:50px 40px;text-align:center}.stat-num{font-family:var(--display);font-size:68px;font-weight:300;line-height:1;background:linear-gradient(135deg,var(--gold),var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;display:block}.stat-label{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--text-dim)}
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.stats-grid{grid-template-columns:1fr}.stats-section{padding:60px 20px}}
+
+/* PRICING */
+.pricing-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:80px}
+
+/* STANDARD CARD (White -> Navy) */
+.pkg-card{background:#fff;padding:50px 40px;position:relative;transition:all .5s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;border-radius:var(--radius-block);border:1px solid var(--border)}
+.pkg-card:hover{background:var(--navy);transform:translateY(-15px);box-shadow:0 40px 80px -20px rgba(11,26,50,0.4);border-color:var(--navy)}
+.pkg-card:hover .pkg-name, .pkg-card:hover .pkg-sub, .pkg-card:hover .pkg-price, .pkg-card:hover .pkg-price-note, .pkg-card:hover .pkg-features li, .pkg-card:hover .pkg-badge{color:#fff}
+.pkg-card:hover .pkg-features li::before{background:#fff}
+.pkg-card:hover .pkg-btn{border-color:rgba(255,255,255,0.4);color:#fff}
+.pkg-card:hover .pkg-btn:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+
+/* FEATURED CARD (Día Completo: Navy -> White) */
+.pkg-card.featured{background:var(--navy);border-color:var(--navy);transform:scale(1.05);z-index:2;box-shadow:0 30px 60px -20px rgba(11,26,50,0.3)}
+.pkg-card.featured .pkg-name, .pkg-card.featured .pkg-sub, .pkg-card.featured .pkg-price, .pkg-card.featured .pkg-price-note, .pkg-card.featured .pkg-features li, .pkg-card.featured .pkg-badge{color:#fff}
+.pkg-card.featured .pkg-features li::before{background:#fff}
+.pkg-card.featured .pkg-btn{border-color:rgba(255,255,255,0.4);color:#fff}
+.pkg-card.featured .pkg-btn:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+
+.pkg-card.featured:hover{background:#fff;transform:translateY(-15px) scale(1.05);box-shadow:0 30px 60px -20px rgba(0,0,0,0.1);border-color:var(--border)}
+.pkg-card.featured:hover .pkg-name, .pkg-card.featured:hover .pkg-price{color:var(--navy)}
+.pkg-card.featured:hover .pkg-sub, .pkg-card.featured:hover .pkg-price-note, .pkg-card.featured:hover .pkg-features li, .pkg-card.featured:hover .pkg-badge{color:var(--text-dim)}
+.pkg-card.featured:hover .pkg-features li::before{background:var(--gold)}
+.pkg-card.featured:hover .pkg-btn{border-color:var(--border);color:var(--text-mid)}
+.pkg-card.featured:hover .pkg-btn:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+
+@media(max-width:900px){.pricing-row{grid-template-columns:1fr}}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:80px}
+.testimonial{background:var(--card);padding:50px 40px;position:relative;border-radius:var(--radius-block);transition:all .5s cubic-bezier(.22,1,.36,1)}
+.testimonial:hover{background:#fff;transform:translateY(-10px) rotate(1deg);box-shadow:0 20px 40px rgba(0,0,0,0.05)}
+.testimonial::before{content:'"';font-family:var(--cursive);font-size:100px;color:rgba(197, 160, 89,.1);line-height:1;position:absolute;top:10px;left:32px}
+.testimonial-text{font-family:var(--display);font-size:18px;font-style:italic;font-weight:300;line-height:1.8;color:var(--text-mid);margin-bottom:28px;position:relative;z-index:1}
+.testimonial-author{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.9;font-weight:600}
+.testimonial-role{font-size:10px;letter-spacing:.1em;color:var(--text-dim);margin-top:4px}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr}}
+
+/* CTA */
+.cta-section{text-align:center;position:relative;overflow:hidden;padding:180px 50px;background:var(--navy);color:#fff}
+.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(197, 160, 89,.05) 0%,transparent 70%);pointer-events:none}
+.cta-lines{position:absolute;inset:0;pointer-events:none}
+.cta-lines::before,.cta-lines::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.1),transparent)}
+.cta-lines::before{left:15%}
+.cta-lines::after{right:15%}
+.cta-content{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.cta-eyebrow{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:30px}
+.cta-eyebrow-line{width:40px;height:1px;background:var(--gold);opacity:.5}
+.cta-eyebrow span{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);opacity:.8}
+.cta-content h2{font-family:var(--display);font-size:clamp(42px,6vw,86px);font-weight:400;line-height:1.1;color:#fff;margin-bottom:24px}
+.cta-content h2 em{color:var(--gold);font-style:normal}
+.cta-content p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.7);line-height:2;letter-spacing:.06em;margin-bottom:50px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-content .btn-gold{background:var(--gold);color:#fff}
+.cta-content .btn-gold:hover{background:var(--gold-light);color:#fff}
+
+/* FORM MODAL */
+.form-overlay{position:fixed;inset:0;background:rgba(8, 32, 82, 0.4);backdrop-filter:blur(16px);z-index:200;display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.form-overlay.active{display:flex;opacity:1}
+.form-card{background:var(--white);border:1px solid var(--border);max-width:540px;width:92%;position:relative;animation:fadeUp .4s both;border-radius:30px;overflow:hidden;box-shadow:0 50px 100px -20px rgba(0,0,0,0.3)}
+.form-card-header{padding:50px 50px 30px;border-bottom:1px solid rgba(0,0,0,.08);background:var(--beige)}
+.form-card-header h3{font-family:var(--display);font-size:36px;font-weight:400;color:var(--text);margin-bottom:6px}
+.form-card-header h3 em{background: linear-gradient(135deg, var(--gold), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+.form-card-header p{font-size:11px;letter-spacing:.1em;color:var(--text-dim)}
+.form-card-body{padding:36px 50px 50px}
+.form-card label{display:block;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px}
+.form-card input,.form-card select,.form-card textarea{width:100%;padding:14px 15px;border:1px solid rgba(0,0,0,0.05);border-radius:12px;background:rgba(0,0,0,0.02);color:var(--text);font-family:var(--body);font-size:13px;font-weight:300;letter-spacing:.04em;margin-bottom:28px;outline:none;transition:all .3s}
+.form-card input:focus,.form-card select:focus,.form-card textarea:focus{border-color:var(--navy);background:#fff;box-shadow:0 5px 15px rgba(0,43,91,0.05)}
+.form-card select option{background:#F8F0E5;color:var(--navy)}
+.form-card textarea{resize:vertical;min-height:70px}
+.form-close{position:absolute;top:20px;right:24px;background:rgba(0,0,0,0.05);border:none;color:var(--text-dim);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s}
+.form-close:hover{background:var(--gold);color:#fff;transform:rotate(90deg)}
+.form-submit{width:100%;padding:18px;border:none;background:var(--gold);color:#fff;font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:all .35s;border-radius:var(--radius)}
+.form-submit:hover{background:var(--gold-light);transform:scale(1.02);box-shadow:0 10px 25px rgba(197, 160, 89, 0.3)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:80px 50px;background:var(--navy);color:var(--beige)}
+.footer-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.footer-brand .logo{margin-bottom:16px;display:block;color:var(--beige)}
+.footer-brand p{font-size:12px;font-weight:300;color:rgba(245, 240, 230, 0.7);line-height:2;letter-spacing:.04em;max-width:280px}
+.footer-col h4{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:.9}
+.footer-col a,.footer-col p{display:block;font-size:12px;font-weight:300;color:rgba(245, 240, 230, 0.7);margin-bottom:10px;letter-spacing:.04em;transition:color .3s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:30px;display:flex;justify-content:space-between;align-items:center;max-width:1300px;margin:0 auto}
+.footer-bottom p{font-size:11px;color:rgba(245, 240, 230, 0.5);letter-spacing:.06em}
+.footer-bottom p:last-child{color:var(--gold);font-size:10px;letter-spacing:.15em}
+@media(max-width:768px){
+  .footer-inner{grid-template-columns:1fr;gap:40px}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+  footer{padding:50px 24px}
+  section{padding:80px 24px}
+  .stats-section{padding:60px 24px}
+  .cta-section{padding:120px 24px}
+  .form-card-header{padding:36px 28px 24px}
+  .form-card-body{padding:28px 28px 36px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+<div class="nav-inner">
+  <a href="#" class="logo">MAREA <span>Yachts · Los Mochis</span></a>
+  <div class="hamburger" id="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links">
+    <a href="#experiencias">Experiencias</a>
+    <a href="#yate">El Yate</a>
+    <a href="#paquetes">Paquetes</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#" class="nav-cta" onclick="openForm('Consulta');return false">Reservar</a>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="13512855_3840_2160_24fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay" style="background: linear-gradient(180deg, rgba(11, 26, 50, 0.8) 0%, rgba(11, 26, 50, 0.3) 50%, var(--beige) 100%)"></div>
+  </div>
+  <div class="hero-side-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Los Mochis · Sinaloa · Mar de Cortés</span>
+      <div class="hero-eyebrow-line"></div>
+    </div>
+    <h1>El mar<br><em>te espera</em></h1>
+    <p class="hero-tagline">Experiencias privadas en yate de lujo</p>
+    <p class="hero-desc">Navega el Mar de Cortés desde Los Mochis.<br>Pesca, atardeceres, eventos. Todo a bordo.</p>
+    <div class="hero-cta-row">
+      <a href="#paquetes" class="btn-gold">Ver paquetes</a>
+      <a href="#yate" class="btn-ghost">Conocer el yate</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div style="padding:30px 0">
+  <div class="gold-divider">
+    <div class="gold-divider-line"></div>
+    <div class="gold-divider-diamond"></div>
+    <div class="gold-divider-line"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <span class="stat-num">5+</span>
+      <span class="stat-label">Años en el mar</span>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <span class="stat-num">300+</span>
+      <span class="stat-label">Experiencias realizadas</span>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <span class="stat-num">48</span>
+      <span class="stat-label">Pies de eslora</span>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <span class="stat-num">12</span>
+      <span class="stat-label">Pasajeros máximo</span>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCES -->
+<section id="experiencias">
+<div class="section-inner">
+  <div class="section-label reveal">
+    <div class="section-label-line"></div>
+    <span>Lo que ofrecemos</span>
+  </div>
+  <h2 class="section-title reveal" data-char-anim>Experiencias <em>únicas</em></h2>
+  <p class="section-desc reveal reveal-delay-1">Cada salida al mar es diseñada para superar tus expectativas. El Mar de Cortés como escenario, el lujo como estándar.</p>
+  <div class="exp-grid">
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-num">01</div>
+      <h3>Pesca <em>Deportiva</em></h3>
+      <p>El Mar de Cortés es uno de los mejores destinos de pesca del mundo. Marlín, dorado, atún. Sal a por el ejemplar de tu vida con todo el equipo a bordo.</p>
+      <div class="exp-card-tag">Pesca mayor · Spinning · Carnada</div>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-num">02</div>
+      <h3>Atardeceres <em>Privados</em></h3>
+      <p>Los atardeceres en el Pacífico son incomparables. Una copa en mano, la brisa del mar, y el horizonte incendiado de naranja y oro. Solo para ti y los tuyos.</p>
+      <div class="exp-card-tag">Vino · Cóctel · Fotografía</div>
+    </div>
+    <div class="exp-card reveal reveal-delay-3">
+      <div class="exp-num">03</div>
+      <h3>Eventos <em>a Bordo</em></h3>
+      <p>Cumpleaños, aniversarios, celebraciones de empresa. Convierte cualquier ocasión en un recuerdo imborrable sobre el agua. Catering, música y decoración a tu medida.</p>
+      <div class="exp-card-tag">Bodas · Corporativo · Cumpleaños</div>
+    </div>
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-num">04</div>
+      <h3>Snorkel & <em>Playa</em></h3>
+      <p>Fondea en bahías cristalinas, explora la vida marina y descansa en playas vírgenes accesibles solo por mar. Un paraíso privado al alcance de tu mano.</p>
+      <div class="exp-card-tag">Equipo incluido · Guía a bordo</div>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-num">05</div>
+      <h3>Gastronomía <em>Náutica</em></h3>
+      <p>Chef privado a bordo con menú del día. Mariscos frescos de la región, preparados en alta mar con los mejores ingredientes del noroeste de México.</p>
+      <div class="exp-card-tag">Chef privado · Mariscos · Maridaje</div>
+    </div>
+    <div class="exp-card reveal reveal-delay-3">
+      <div class="exp-num">06</div>
+      <h3>Tours <em>Isla Farallón</em></h3>
+      <p>Navega hasta el Farallón de San Ignacio, hábitat de lobos marinos y aves marinas únicas. Una experiencia de vida silvestre a solo horas de Los Mochis.</p>
+      <div class="exp-card-tag">Vida silvestre · Fotografía · Naturaleza</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div style="padding:10px 0">
+  <div class="gold-divider">
+    <div class="gold-divider-line"></div>
+    <div class="gold-divider-diamond"></div>
+    <div class="gold-divider-line"></div>
+  </div>
+</div>
+
+<!-- YACHT DETAIL -->
+<section id="yate">
+<div class="section-inner">
+  <div class="section-label reveal">
+    <div class="section-label-line"></div>
+    <span>El yate</span>
+  </div>
+  <h2 class="section-title reveal" data-char-anim>Una embarcación<br><em>sin igual</em></h2>
+</div>
+
+<div style="max-width:1300px;margin:60px auto 0;padding:0 0px">
+  <div class="feature-block reveal">
+    <div class="feature-img">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80"
+           alt="Interior de lujo del yate"
+           onerror="this.src='https://images.unsplash.com/photo-1505275350441-83dcda8eeef5?w=900&q=80'">
+      <div class="feature-img-overlay"></div>
+    </div>
+    <div class="feature-text">
+      <span class="feature-number">I</span>
+      <h3>Cubierta &amp; <em>Espacios</em></h3>
+      <p>Cubierta de sol con tumbona y sombra, salon interior climatizado con vista panorámica al mar, área de popa equipada para pesca o reunión. Diseñado para que cada momento a bordo sea memorable.</p>
+      <div class="feature-detail">
+        <div class="feature-detail-item">Cubierta de sol con zona de descanso</div>
+        <div class="feature-detail-item">Salón interior con A/C y sonido</div>
+        <div class="feature-detail-item">Cocina equipada y bar a bordo</div>
+        <div class="feature-detail-item">2 cabinas privadas</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-block reverse reveal">
+    <div class="feature-img">
+      <img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=900&q=80"
+           alt="Motor y navegación del yate"
+           onerror="this.src='https://images.unsplash.com/photo-1601629665203-f9f2b8d07428?w=900&q=80'">
+      <div class="feature-img-overlay"></div>
+    </div>
+    <div class="feature-text">
+      <span class="feature-number">II</span>
+      <h3>Potencia &amp; <em>Seguridad</em></h3>
+      <p>Equipado con los mejores motores para navegar con confianza en el Mar de Cortés. Todo el equipo de seguridad homologado, GPS, comunicación por radio, chalecos y botes salvavidas certificados.</p>
+      <div class="feature-detail">
+        <div class="feature-detail-item">Motores de alta potencia revisados</div>
+        <div class="feature-detail-item">GPS y carta náutica digital</div>
+        <div class="feature-detail-item">Radio VHF y equipo de emergencia</div>
+        <div class="feature-detail-item">Capitán certificado incluido</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-block reveal">
+    <div class="feature-img">
+      <img src="https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=900&q=80"
+           alt="Vista al mar desde el yate"
+           onerror="this.src='https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=900&q=80'">
+      <div class="feature-img-overlay"></div>
+    </div>
+    <div class="feature-text">
+      <span class="feature-number">III</span>
+      <h3>Equipo de <em>Pesca</em></h3>
+      <p>Varillas de alta gama, carretes de pelea, carnada viva, líneas de plomo, señuelos artesanales y toda la preparación para salir a pescar como los grandes. El equipo lo ponemos nosotros, el trofeo es tuyo.</p>
+      <div class="feature-detail">
+        <div class="feature-detail-item">Varillas y carretes profesionales</div>
+        <div class="feature-detail-item">Carnada viva disponible</div>
+        <div class="feature-detail-item">Guía experto en la región</div>
+        <div class="feature-detail-item">Heladora para conservar tu captura</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div style="padding:10px 0">
+  <div class="gold-divider">
+    <div class="gold-divider-line"></div>
+    <div class="gold-divider-diamond"></div>
+    <div class="gold-divider-line"></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section>
+<div class="section-inner">
+  <div class="section-label reveal"><div class="section-label-line"></div><span>Galería</span></div>
+  <h2 class="section-title reveal" data-char-anim>Momentos <em>eternos</em></h2>
+  <div class="gallery-strip">
+    <div class="gallery-strip-item">
+      <img src="https://images.unsplash.com/photo-1549439602-43ebca2327af?w=700&q=80" alt="Yate al atardecer"
+           onerror="this.src='https://images.unsplash.com/photo-1505275350441-83dcda8eeef5?w=700&q=80'">
+      <div class="gallery-label">Atardecer · Mar de Cortés</div>
+    </div>
+    <div class="gallery-strip-item">
+      <img src="https://images.unsplash.com/photo-1577117226-03b0cc3f5fc4?w=600&q=80" alt="Pesca deportiva"
+           onerror="this.src='https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80'">
+      <div class="gallery-label">Pesca Mayor</div>
+    </div>
+    <div class="gallery-strip-item">
+      <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" alt="Cubierta del yate"
+           onerror="this.src='https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80'">
+      <div class="gallery-label">A Bordo</div>
+    </div>
+    <div class="gallery-strip-item">
+      <img src="https://images.unsplash.com/photo-1498654200943-1088dd4438ae?w=600&q=80" alt="Mar cristalino"
+           onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80'">
+      <div class="gallery-label">Aguas cristalinas</div>
+    </div>
+    <div class="gallery-strip-item">
+      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80" alt="Evento en yate"
+           onerror="this.src='https://images.unsplash.com/photo-1482179773067-6c78f52a40c7?w=600&q=80'">
+      <div class="gallery-label">Celebraciones</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="paquetes">
+<div class="section-inner">
+  <div class="section-label reveal"><div class="section-label-line"></div><span>Paquetes</span></div>
+  <h2 class="section-title reveal" data-char-anim>Elige tu <em>experiencia</em></h2>
+  <p class="section-desc reveal reveal-delay-1">Todos nuestros paquetes incluyen capitán certificado, combustible, equipo de seguridad y servicio de primer nivel. Precios en pesos mexicanos.</p>
+  <div class="pricing-row">
+    <div class="pkg-card reveal reveal-delay-1">
+      <div class="pkg-badge">Esencial</div>
+      <h3 class="pkg-name">Medio Día</h3>
+      <p class="pkg-sub">4 horas · Hasta 8 personas</p>
+      <div class="pkg-price-row">
+        <span class="pkg-price"><sup>$</sup>6,500</span>
+      </div>
+      <p class="pkg-price-note">por salida · IVA incluido</p>
+      <ul class="pkg-features">
+        <li>Capitán y marinero a bordo</li>
+        <li>Combustible incluido</li>
+        <li>Equipo de pesca básico</li>
+        <li>Hielo y agua a bordo</li>
+        <li>Zona de navegación local</li>
+      </ul>
+      <a href="#" class="pkg-btn" data-service="Medio Día" onclick="openForm('Medio Día');return false">Consultar disponibilidad</a>
+    </div>
+    <div class="pkg-card featured floating reveal reveal-delay-2">
+      <div class="pkg-badge">Más popular</div>
+      <h3 class="pkg-name">Día Completo</h3>
+      <p class="pkg-sub">8 horas · Hasta 12 personas</p>
+      <div class="pkg-price-row">
+        <span class="pkg-price"><sup>$</sup>12,000</span>
+      </div>
+      <p class="pkg-price-note">por salida · IVA incluido</p>
+      <ul class="pkg-features">
+        <li>Capitán y 2 marineros</li>
+        <li>Combustible incluido</li>
+        <li>Equipo de pesca completo</li>
+        <li>Carnada viva disponible</li>
+        <li>Comida y bebidas incluidas</li>
+        <li>Snorkel y equipo de playa</li>
+        <li>Fotografía de la salida</li>
+      </ul>
+      <a href="#" class="pkg-btn" data-service="Día Completo" onclick="openForm('Día Completo');return false">Reservar ahora</a>
+    </div>
+    <div class="pkg-card reveal reveal-delay-3">
+      <div class="pkg-badge">Premium</div>
+      <h3 class="pkg-name">Evento Privado</h3>
+      <p class="pkg-sub">A tu medida · Hasta 12 personas</p>
+      <div class="pkg-price-row">
+        <span class="pkg-price">Custom</span>
+      </div>
+      <p class="pkg-price-note">cotización personalizada</p>
+      <ul class="pkg-features">
+        <li>Decoración y ambientación</li>
+        <li>Chef privado a bordo</li>
+        <li>Menú mariscos de temporada</li>
+        <li>Música y sonido profesional</li>
+        <li>Fotógrafo profesional</li>
+        <li>Maridaje y coctelería</li>
+        <li>Itinerario personalizado</li>
+      </ul>
+      <a href="#" class="pkg-btn" data-service="Evento Privado" onclick="openForm('Evento Privado');return false">Solicitar cotización</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<div style="padding:10px 0">
+  <div class="gold-divider">
+    <div class="gold-divider-line"></div>
+    <div class="gold-divider-diamond"></div>
+    <div class="gold-divider-line"></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section>
+<div class="section-inner">
+  <div class="section-label reveal"><div class="section-label-line"></div><span>Testimonios</span></div>
+  <h2 class="section-title reveal" data-char-anim>Lo que dicen<br><em>nuestros clientes</em></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial reveal reveal-delay-1">
+      <p class="testimonial-text">El mejor cumpleaños de mi vida. El equipo de MAREA lo preparó todo a la perfección. El mar, la comida, el servicio… no hay palabras para describirlo.</p>
+      <p class="testimonial-author">Sofía R.</p>
+      <p class="testimonial-role">Evento de cumpleaños · Los Mochis</p>
+    </div>
+    <div class="testimonial reveal reveal-delay-2">
+      <p class="testimonial-text">Salimos a pescar marlín y regresamos con trofeo. El capitán conoce el mar de Cortés como la palma de su mano. Volveremos sin duda.</p>
+      <p class="testimonial-author">Carlos & Eduardo M.</p>
+      <p class="testimonial-role">Pesca deportiva · Día completo</p>
+    </div>
+    <div class="testimonial reveal reveal-delay-3">
+      <p class="testimonial-text">Organizamos el cierre de año de nuestra empresa a bordo. Fue una experiencia que el equipo no olvidará. Todo impecable, de principio a fin.</p>
+      <p class="testimonial-author">Grupo Industrial Noreste</p>
+      <p class="testimonial-role">Evento corporativo privado</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <div class="cta-lines"></div>
+  <div class="cta-content reveal">
+    <div class="cta-eyebrow">
+      <div class="cta-eyebrow-line"></div>
+      <span>Tu próxima aventura</span>
+      <div class="cta-eyebrow-line"></div>
+    </div>
+    <h2>El mar te <em>espera</em></h2>
+    <p>Reserva tu experiencia en el Mar de Cortés. Cupos limitados por semana para garantizar un servicio excepcional.</p>
+    <a href="#" class="btn-gold" onclick="openForm('Consulta general');return false">Reservar mi experiencia →</a>
+  </div>
+</section>
+
+<!-- FORM MODAL -->
+<div class="form-overlay" id="formOverlay" onclick="if(event.target===this)closeForm()">
+<div class="form-card">
+  <button class="form-close" onclick="closeForm()">✕ Cerrar</button>
+  <div class="form-card-header">
+    <h3>Agenda tu <em>salida</em></h3>
+    <p>Completa tus datos · Te contactamos en menos de 2 horas</p>
+  </div>
+  <div class="form-card-body">
+    <form id="contactForm" onsubmit="sendWhatsApp(event)">
+      <label for="fname">Tu nombre</label>
+      <input type="text" id="fname" placeholder="Nombre completo" required>
+      <label for="fdate">Fecha deseada</label>
+      <input type="date" id="fdate">
+      <label for="fguests">Número de personas</label>
+      <select id="fguests">
+        <option value="1-4">1 – 4 personas</option>
+        <option value="5-8">5 – 8 personas</option>
+        <option value="9-12">9 – 12 personas</option>
+      </select>
+      <label for="fservice">Paquete de interés</label>
+      <input type="text" id="fservice" placeholder="Medio Día / Día Completo / Evento" readonly>
+      <label for="fneed">¿Algo especial en mente?</label>
+      <textarea id="fneed" placeholder="Pesca, atardecer, cumpleaños, aniversario…"></textarea>
+      <button type="submit" class="form-submit">📲 Enviar por WhatsApp</button>
+    </form>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-inner">
+  <div class="footer-brand">
+    <span class="logo">MAREA <span>Yachts · Los Mochis</span></span>
+    <p>Experiencias privadas en yate de lujo en el Mar de Cortés, saliendo desde Los Mochis, Sinaloa. Pesca, atardeceres, eventos y más.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Navegación</h4>
+    <a href="#experiencias">Experiencias</a>
+    <a href="#yate">El Yate</a>
+    <a href="#paquetes">Paquetes</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="footer-col">
+    <h4>Contacto</h4>
+    <p>Los Mochis, Sinaloa</p>
+    <a href="tel:+52XXXXXXXXXX">+52 (668) XXX-XXXX</a>
+    <a href="https://wa.me/52668XXXXXXX">WhatsApp</a>
+    <a href="mailto:hola@mareayachts.mx">hola@mareayachts.mx</a>
+  </div>
+</div>
+<div class="footer-bottom">
+  <p>© 2025 MAREA Yachts · Los Mochis, Sinaloa · Todos los derechos reservados</p>
+  <p style="color:var(--gold3);font-size:10px;letter-spacing:.15em">Diseñado con ✦ para el mar</p>
+</div>
+</footer>
+
+<script>
+/* CHAR DROP */
+function splitChars(el){
+  const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+  const textNodes=[];while(walker.nextNode())textNodes.push(walker.currentNode);
+  let ci=0;
+  textNodes.forEach(node=>{
+    const frag=document.createDocumentFragment();
+    node.textContent.split('').forEach(ch=>{
+      if(ch===' '){const sp=document.createElement('span');sp.className='char-space';sp.innerHTML='&nbsp;';frag.appendChild(sp);}
+      else{const s=document.createElement('span');s.className='char';s.textContent=ch;s.style.animationDelay=(ci*0.035)+'s';frag.appendChild(s);}
+      ci++;
+    });
+    node.parentNode.replaceChild(frag,node);
+  });
+}
+document.querySelectorAll('[data-char-anim]').forEach(el=>splitChars(el));
+const charObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('char-anim');charObs.unobserve(e.target)}});
+},{threshold:.2});
+document.querySelectorAll('[data-char-anim]').forEach(el=>charObs.observe(el));
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* NAV */
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);
+},{passive:true});
+
+/* FORM */
+function openForm(service){
+  const o=document.getElementById('formOverlay');
+  o.classList.add('active');
+  if(service)document.getElementById('fservice').value=service;
+  document.body.style.overflow='hidden';
+}
+function closeForm(){
+  document.getElementById('formOverlay').classList.remove('active');
+  document.body.style.overflow='';
+}
+function sendWhatsApp(e){
+  e.preventDefault();
+  const name=document.getElementById('fname').value;
+  const date=document.getElementById('fdate').value;
+  const guests=document.getElementById('fguests').value;
+  const service=document.getElementById('fservice').value;
+  const need=document.getElementById('fneed').value;
+  const msg=`¡Hola MAREA Yachts! ⚓%0A%0AQuiero reservar una experiencia:%0A%0A*Nombre:* ${encodeURIComponent(name)}%0A*Fecha:* ${encodeURIComponent(date||'Por definir')}%0A*Personas:* ${encodeURIComponent(guests)}%0A*Paquete:* ${encodeURIComponent(service)}%0A*Detalles:* ${encodeURIComponent(need||'Sin detalles adicionales')}`;
+  window.open(`https://wa.me/5216681234567?text=${msg}`,'_blank');
+  closeForm();
+}
+
+/* MOUSE PARALLAX HERO */
+document.addEventListener('mousemove', (e) => {
+  const video = document.querySelector('.hero-video');
+  if (!video) return;
+  const x = (window.innerWidth - e.pageX * 2) / 100;
+  const y = (window.innerHeight - e.pageY * 2) / 100;
+  video.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
+});
+</script>
+</body>
+</html>
