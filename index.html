@@ -113,22 +113,14 @@ nav.scrolled .hamburger span{background:var(--navy)}
 @media(max-width:768px){
   nav{padding:20px 24px}
   nav.scrolled{padding:14px 24px}
-  .nav-links{display:none;position:absolute;top:65px;left:0;right:0;background:rgba(249,247,243,.98);flex-direction:column;padding:40px;gap:30px;border-bottom:1px solid var(--border)}
+  .nav-links{display:none;position:absolute;top:65px;left:0;right:0;background:rgba(6,16,33,.98);backdrop-filter:blur(10px);flex-direction:column;padding:40px;gap:30px;border-bottom:1px solid var(--border)}
   .nav-links.open{display:flex}
   .hamburger{display:flex}
-  .hero-content{padding-top:60px}
-  .hero h1 em{
-    background: none;
-    -webkit-text-fill-color: initial;
-    color: #fff;
-    font-family: var(--cursive);
-    font-size: 1.2em;
-    line-height: 1.2;
-    display: block;
-    margin-top: 10px;
-    transform: none;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  }
+  .hero-content{padding-top:40px;min-height:70vh}
+  .hero h1{font-size:clamp(48px,12vw,80px);line-height:0.9}
+  .hero h1 em{margin-top:80px;font-size:0.5em}
+  .hero-yacht-wrap{max-width:90%;top:55%}
+  .hero-eyebrow{margin-bottom:20px}
 }
 
 /* HERO */
@@ -355,11 +347,14 @@ footer{border-top:1px solid var(--border);padding:80px 50px;background:var(--nav
   .footer-inner{grid-template-columns:1fr;gap:40px}
   .footer-bottom{flex-direction:column;gap:16px;text-align:center}
   footer{padding:50px 24px}
-  section{padding:80px 24px}
-  .stats-section{padding:60px 24px}
-  .cta-section{padding:120px 24px}
+  section{padding:60px 24px}
+  .stats-section{padding:50px 24px}
+  .cta-section{padding:100px 24px}
   .form-card-header{padding:36px 28px 24px}
   .form-card-body{padding:28px 28px 36px}
+  .pricing-row{gap:20px}
+  .pkg-card{padding:40px 30px}
+  .pkg-card.featured{transform:scale(1)}
 }
 </style>
 </head>
